@@ -6,8 +6,8 @@
  * Time: 12:54 PM
  */
 
-$app->get('/', function () {
+$app->get('/home', function ($request, $response) {
 
-    return 'Home';
+    return $this->view->render($response, 'home.twig');
 
 });
