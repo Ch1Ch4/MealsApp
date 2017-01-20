@@ -17,7 +17,9 @@ use Slim\Views\Twig as View;
 class AuthController extends Controller {
 
     public function getSignUp($request, $response) {
+
         return $this->view->render($response, 'auth/signup.twig');
+
     }
 
     public function postSignUp($request, $response) {
