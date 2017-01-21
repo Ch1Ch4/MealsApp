@@ -24,7 +24,16 @@ class AuthController extends Controller {
 
     public function postSignIn($request, $response) {
 
-        return $this->view->render($response, 'auth/signup.twig');
+        $auth = $this->auth->attempt(
+            $request->getParam('email'),
+            $request->getParam('password')
+        );
+
+        if (!$auth) {
+            return $response->withRedirect($this->router->pathFor('auth.signin'));
+        }
+
+        return $response->withRedirect($this->router->pathFor('home'));
 
     }
 
