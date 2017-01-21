@@ -16,6 +16,14 @@ use Slim\Views\Twig as View;
 
 class AuthController extends Controller {
 
+    public function getSignOut($request, $response) {
+
+        $this->auth->signout();
+
+        return $response->withRedirect($this->router->pathFor('home'));
+
+    }
+
     public function getSignIn($request, $response) {
 
         return $this->view->render($response, 'auth/signin.twig');
