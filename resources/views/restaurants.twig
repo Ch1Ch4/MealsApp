@@ -1,0 +1,26 @@
+{% extends 'templates/app.twig' %}
+
+{% block content %}
+
+    <h2>Daily Meals</h2>
+    <table class="table table-striped sortable">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Location</th>
+            <th>Menu</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for restaurant in restaurants %}
+            <tr>
+                <td>{{ restaurant.name }}</td>
+                <td>{{ restaurant.location }}</td>
+                <td>{{ restaurant.menu }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+{% endblock %}
