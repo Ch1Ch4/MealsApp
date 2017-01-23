@@ -27,5 +27,7 @@ $app->group('', function() {
     $this->get('/auth/signout', 'AuthController:getSignOut')->setName('auth.signout');
     $this->get('/auth/password/change', 'PasswordController:getChangePassword')->setName('auth.password.change');
     $this->post('/auth/password/change', 'PasswordController:postChangePassword');
+    $this->get('/restaurants', 'RestaurantController:getAllRestaurants')->setName('restaurants');
+
 
 })->add(new AuthMiddleware($container));

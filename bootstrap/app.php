@@ -81,6 +81,10 @@ $container['AuthController'] = function ($container) {
     return new \App\Controllers\Auth\AuthController($container);
 };
 
+$container['RestaurantController'] = function ($container) {
+    return new \App\Controllers\Restaurant\RestaurantController($container);
+};
+
 $container['PasswordController'] = function ($container) {
     return new \App\Controllers\Auth\PasswordController($container);
 };
