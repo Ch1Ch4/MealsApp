@@ -7,6 +7,7 @@
  */
 
 use App\Middleware\AuthMiddleware;
+use App\Middleware\GuestMiddleware;
 
 $app->get('/', 'HomeController:index')->setName('home');
 
