@@ -6,10 +6,16 @@
  * Time: 12:54 PM
  */
 
+
 use App\Middleware\AuthMiddleware;
 use App\Middleware\GuestMiddleware;
 
+
 $app->get('/', 'HomeController:index')->setName('home');
+
+// Restaurants API
+$app->get('/api/restaurants', 'RestaurantController:getAllRestaurantsAPI');
+$app->get('/api/restaurant/id/{id}', 'RestaurantController:getRestaurantAPI');
 
 $app->group('', function() {
 
