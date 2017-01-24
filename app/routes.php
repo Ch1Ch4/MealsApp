@@ -17,6 +17,8 @@ $app->get('/', 'HomeController:index')->setName('home');
 $app->get('/api/restaurants', 'RestaurantController:getAllRestaurantsAPI');
 $app->get('/api/restaurant/id/{id}', 'RestaurantController:getRestaurantAPI');
 
+$app->post('/api/restaurant/add', 'RestaurantController:postRestaurant');
+
 $app->group('', function() {
 
     $this->get('/auth/signup', 'AuthController:getSignUp')->setName('auth.signup');

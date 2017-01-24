@@ -15,6 +15,8 @@ use \Psr\Http\Message\ResponseInterface as Response;
 
 class RestaurantController extends Controller {
 
+
+
     public function getAllRestaurants($request, $response) {
 
         $restaurants = Restaurant::all();
@@ -35,5 +37,20 @@ class RestaurantController extends Controller {
         json_encode($restaurant);
         echo $restaurant;
     }
+
+    public function postRestaurant(Request $request, Response $response) {
+
+        $name = $request->getParam('name');
+        $location = $request->getParam('location');
+        $menu = $request->getParam('menu');
+
+        $restaurant = new Restaurant(array(
+            'name' => $name,
+            'location' => $location,
+            'menu' => $menu,
+        ));
+        $restaurant->save();
+    }
+
 
 }
