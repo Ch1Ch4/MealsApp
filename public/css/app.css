@@ -4,8 +4,23 @@
 
 /* Sortable tables */
 table.sortable thead {
+    margin-top:20px;
     background-color:#eee;
     color:#666666;
     font-weight: bold;
     cursor: pointer;
+}
+
+.search_box {
+    margin-bottom:10px;
+}
+
+.search_box i {
+    position: relative;
+    left:22px;
+    color: gray;
+}
+
+.search_box input {
+    padding-left: 21px;
 }
