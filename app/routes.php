@@ -18,6 +18,8 @@ $app->get('/api/restaurants', 'RestaurantController:getAllRestaurantsAPI');
 $app->get('/api/restaurant/id/{id}', 'RestaurantController:getRestaurantAPI');
 
 $app->post('/api/restaurant/add', 'RestaurantController:postRestaurant');
+$app->put('/api/restaurant/update/{id}', 'RestaurantController:putRestaurant');
+$app->delete('/api/restaurant/delete/{id}', 'RestaurantController:deleteRestaurant');
 
 $app->group('', function() {
 

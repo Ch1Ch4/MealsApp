@@ -38,19 +38,47 @@ class RestaurantController extends Controller {
         echo $restaurant;
     }
 
+    // Add new Restaurant
+
     public function postRestaurant(Request $request, Response $response) {
 
         $name = $request->getParam('name');
         $location = $request->getParam('location');
         $menu = $request->getParam('menu');
 
-        $restaurant = new Restaurant(array(
+        $restaurant = new Restaurant([
             'name' => $name,
             'location' => $location,
             'menu' => $menu,
-        ));
+        ]);
         $restaurant->save();
     }
 
+    // Update Restaurant
+
+    public function putRestaurant(Request $request, Response $response) {
+
+        $id = $request->getAttribute('id');
+
+        $name = $request->getParam('name');
+        $location = $request->getParam('location');
+        $menu = $request->getParam('menu');
+
+        $restaurant = Restaurant::where('id', $id)->update([
+            'name' => $name,
+            'location' => $location,
+            'menu' => $menu,
+        ]);
+    }
+
+    // Delete Restaurant
+
+    public function deleteRestaurant(Request $request, Response $response) {
+
+        $id = $request->getAttribute('id');
+        $restaurant = Restaurant::where('id', $id);
+        $restaurant->delete();
+
+    }
 
 }
