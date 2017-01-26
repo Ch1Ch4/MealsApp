@@ -17,12 +17,17 @@
             <p>You can use
                 <a href="https://chrome.google.com/webstore/detail/resteasy/nojelkgnnpdmhpankkiikipkmhgafoch" target="_blank">RestEasy</a>
                 addon for chrome to check MealsApp API</p>
+        {% if auth.check %}
+
+            <p><strong>Your Domain:</strong> <code>{{ base_url() }}</code></p>
+            <p><strong>Your API Key:</strong> <code>{{ api_key }}</code></p>
+        {% endif %}
         </div>
         <div class="col-md-6">
             <div class="panel panel-default meals-panel">
                 <div class="panel-heading"><strong>Get All Restaurants</strong></div>
                 <div class="panel-body">
-                    Use <code>http://{domain}/api/restaurants</code> to get json for all restaurants.
+                    Use <code>http://{domain}/api/restaurants?api_key={your_api_key}</code> to get json for all restaurants.
                 </div>
             </div>
         </div>
@@ -30,10 +35,10 @@
             <div class="panel panel-default meals-panel">
                 <div class="panel-heading"><strong>Get Single Restaurant by ID</strong></div>
                 <div class="panel-body">
-                    Use <code>http://{domain}/api/restaurant/id/{id}</code> to get json for single restaurant.
+                    Use <code>http://{domain}/api/restaurant/id/{id}?api_key={your_api_key}</code> to get json for single restaurant.
                     <br />
                     Example:<br />
-                    <code>http://mealsapp.com/api/restaurant/id/4</code> to get json for single restaurant with ID 4.
+                    <code>http://mealsapp.com/api/restaurant/id/4?api_key=d1cefa6aac3dafa65e8ae4466bc37588</code> to get json for single restaurant with ID 4.
                 </div>
             </div>
         </div>
@@ -41,7 +46,7 @@
             <div class="panel panel-default meals-panel">
                 <div class="panel-heading"><strong>Add Restaurant</strong></div>
                 <div class="panel-body">
-                    Use <code>http://{domain}/api/restaurant/add</code> and send JSON like:
+                    Use <code>http://{domain}/api/restaurant/add?api_key={your_api_key}</code> and send JSON like:
                     <br />
                     Example:<br />
                     <code>
@@ -58,10 +63,10 @@
             <div class="panel panel-default meals-panel">
                 <div class="panel-heading"><strong>Update Restaurant</strong></div>
                 <div class="panel-body">
-                    Use <code>http://{domain}/api/restaurant/update/{id}</code> and send JSON like:
+                    Use <code>http://{domain}/api/restaurant/update/{id}?api_key={your_api_key}</code> and send JSON like:
                     <br />
                     Link example:<br />
-                    <code>http://mealsapp.com/api/restaurant/id/4</code>
+                    <code>http://mealsapp.com/api/restaurant/id/4?api_key=d1cefa6aac3dafa65e8ae4466bc37588</code>
                     <br />
                     JSON:
                     <br />
@@ -79,7 +84,7 @@
             <div class="panel panel-default meals-panel">
                 <div class="panel-heading"><strong>Delete Restaurant</strong></div>
                 <div class="panel-body">
-                    Use <code>http://{domain}/api/restaurant/delete/{id}</code>
+                    Use <code>http://{domain}/api/restaurant/delete/{id}?api_key={your_api_key}</code>
                 </div>
             </div>
         </div>

@@ -20,6 +20,8 @@ class RestaurantController extends Controller {
 
     public function getAllRestaurants($request, $response) {
 
+        $isValidApiKey = User::where('api_key', $request->getParam('api_key'))->first();
+
         $restaurants = Restaurant::all();
         $this->container->view->getEnvironment()->addGlobal('restaurants', $restaurants);
 

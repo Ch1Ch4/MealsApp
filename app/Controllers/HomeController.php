@@ -16,6 +16,9 @@ class HomeController extends Controller {
 
     public function index($request, $response) {
 
+        $user  = User::all()->first();
+        $this->container->view->getEnvironment()->addGlobal('api_key', $user->api_key);
+
         return $this->view->render($response, 'home.twig');
     }
 
