@@ -24,3 +24,7 @@ table.sortable thead {
 .search_box input {
     padding-left: 21px;
 }
+
+.meals-panel {
+    min-height:170px;
+}

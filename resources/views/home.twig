@@ -2,7 +2,88 @@
 
 {% block content %}
 
-    <h2>Home</h2>
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Welcome to API-Centric Web Application MealsApp</h2>
+            <h4>Please <a href="{{ path_for('auth.signup') }}">Sign up</a> or <a href="{{ path_for('auth.signin') }}">Sign in</a>
+            if you are already signed up, and go to <a href="{{ path_for('restaurants') }}">Restaurant page</a> to see all Restaurants.</h4>
+        <hr />
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <h2>API Documentation</h2>
+            <p>You can use
+                <a href="https://chrome.google.com/webstore/detail/resteasy/nojelkgnnpdmhpankkiikipkmhgafoch" target="_blank">RestEasy</a>
+                addon for chrome to check MealsApp API</p>
+        </div>
+        <div class="col-md-6">
+            <div class="panel panel-default meals-panel">
+                <div class="panel-heading"><strong>Get All Restaurants</strong></div>
+                <div class="panel-body">
+                    Use <code>http://{domain}/api/restaurants</code> to get json for all restaurants.
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="panel panel-default meals-panel">
+                <div class="panel-heading"><strong>Get Single Restaurant by ID</strong></div>
+                <div class="panel-body">
+                    Use <code>http://{domain}/api/restaurant/id/{id}</code> to get json for single restaurant.
+                    <br />
+                    Example:<br />
+                    <code>http://mealsapp.com/api/restaurant/id/4</code> to get json for single restaurant with ID 4.
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="panel panel-default meals-panel">
+                <div class="panel-heading"><strong>Add Restaurant</strong></div>
+                <div class="panel-body">
+                    Use <code>http://{domain}/api/restaurant/add</code> and send JSON like:
+                    <br />
+                    Example:<br />
+                    <code>
+                        {
+                        "name":"McDonald's",
+                        "location":"Belgrade",
+                        "menu":"Big Mac"
+                        }
+                    </code>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="panel panel-default meals-panel">
+                <div class="panel-heading"><strong>Update Restaurant</strong></div>
+                <div class="panel-body">
+                    Use <code>http://{domain}/api/restaurant/update/{id}</code> and send JSON like:
+                    <br />
+                    Link example:<br />
+                    <code>http://mealsapp.com/api/restaurant/id/4</code>
+                    <br />
+                    JSON:
+                    <br />
+                    <code>
+                        {
+                            "name":"McDonald's",
+                            "location":"Belgrade",
+                            "menu":"Big Mac"
+                        }
+                    </code>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="panel panel-default meals-panel">
+                <div class="panel-heading"><strong>Delete Restaurant</strong></div>
+                <div class="panel-body">
+                    Use <code>http://{domain}/api/restaurant/delete/{id}</code>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
 {% endblock %}

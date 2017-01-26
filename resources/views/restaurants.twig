@@ -2,29 +2,32 @@
 
 {% block content %}
 
-    <h2>Daily Meals</h2>
-    <span class="search_box pull-right">
-        <i class="fa fa-search" aria-hidden="true"></i>
-        <input type="text" id="search" placeholder="Name,Location or Menu">
-    </span>
-    <table class="table table-striped sortable">
-        <thead>
-        <tr>
-            <th>Name</th>
-            <th>Location</th>
-            <th>Menu</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for restaurant in restaurants %}
-            <tr>
-                <td>{{ restaurant.name }}</td>
-                <td>{{ restaurant.location }}</td>
-                <td>{{ restaurant.menu }}</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Daily Meals</h2>
+            <span class="search_box pull-right">
+                <i class="fa fa-search" aria-hidden="true"></i>
+                <input type="text" id="search" placeholder="Name,Location or Menu">
+            </span>
+            <table class="table table-striped sortable">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Location</th>
+                    <th>Menu</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for restaurant in restaurants %}
+                    <tr>
+                        <td>{{ restaurant.name }}</td>
+                        <td>{{ restaurant.location }}</td>
+                        <td>{{ restaurant.menu }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
 
 {% endblock %}
