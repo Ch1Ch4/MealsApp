@@ -68,6 +68,7 @@ class AuthController extends Controller {
             'email' => $request->getParam('email'),
             'name' => $request->getParam('name'),
             'password' => password_hash($request->getParam('password'), PASSWORD_DEFAULT),
+            'api_key' => md5(uniqid($request->getParam('name'), true)),
         ]);
 
         $this->flash->addMessage('info', 'You have been signed up!');

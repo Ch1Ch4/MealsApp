@@ -10,6 +10,7 @@ namespace App\Controllers\Restaurant;
 
 use App\Controllers\Controller;
 use App\Models\Restaurant;
+use App\Models\User;
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
 
@@ -26,58 +27,90 @@ class RestaurantController extends Controller {
     }
 
     public function getAllRestaurantsAPI(Request $request, Response $response) {
-        $restaurants = Restaurant::all();
-        json_encode($restaurants);
-        echo $restaurants;
+
+        $isValidApiKey = User::where('api_key', $request->getParam('api_key'))->first();
+
+        if ($isValidApiKey) {
+            $restaurants = Restaurant::all();
+            json_encode($restaurants);
+            echo $restaurants;
+        } else {
+            echo "Wrong API Key";
+        }
     }
 
     public function getRestaurantAPI(Request $request, Response $response) {
-        $id = $request->getAttribute('id');
-        $restaurant = Restaurant::where('id', $id)->get();;
-        json_encode($restaurant);
-        echo $restaurant;
+
+        $isValidApiKey = User::where('api_key', $request->getParam('api_key'))->first();
+
+        if ($isValidApiKey) {
+            $id = $request->getAttribute('id');
+            $restaurant = Restaurant::where('id', $id)->get();;
+            json_encode($restaurant);
+            echo $restaurant;
+        } else {
+            echo "Wrong API Key";
+        }
     }
 
     // Add new Restaurant
 
     public function postRestaurant(Request $request, Response $response) {
 
+        $isValidApiKey = User::where('api_key', $request->getParam('api_key'))->first();
+
         $name = $request->getParam('name');
         $location = $request->getParam('location');
         $menu = $request->getParam('menu');
 
-        $restaurant = new Restaurant([
-            'name' => $name,
-            'location' => $location,
-            'menu' => $menu,
-        ]);
-        $restaurant->save();
+        if ($isValidApiKey) {
+            $restaurant = new Restaurant([
+                'name' => $name,
+                'location' => $location,
+                'menu' => $menu,
+            ]);
+            $restaurant->save();
+        } else {
+            echo "Wrong API Key";
+        }
     }
 
     // Update Restaurant
 
     public function putRestaurant(Request $request, Response $response) {
 
+        $isValidApiKey = User::where('api_key', $request->getParam('api_key'))->first();
+
         $id = $request->getAttribute('id');
 
         $name = $request->getParam('name');
         $location = $request->getParam('location');
         $menu = $request->getParam('menu');
 
-        $restaurant = Restaurant::where('id', $id)->update([
-            'name' => $name,
-            'location' => $location,
-            'menu' => $menu,
-        ]);
+        if ($isValidApiKey) {
+            $restaurant = Restaurant::where('id', $id)->update([
+                'name' => $name,
+                'location' => $location,
+                'menu' => $menu,
+            ]);
+        } else {
+            echo "Wrong API Key";
+        }
     }
 
     // Delete Restaurant
 
     public function deleteRestaurant(Request $request, Response $response) {
 
-        $id = $request->getAttribute('id');
-        $restaurant = Restaurant::where('id', $id);
-        $restaurant->delete();
+        $isValidApiKey = User::where('api_key', $request->getParam('api_key'))->first();
+
+        if ($isValidApiKey) {
+            $id = $request->getAttribute('id');
+            $restaurant = Restaurant::where('id', $id);
+            $restaurant->delete();
+        } else {
+            echo "Wrong API Key";
+        }
 
     }
 

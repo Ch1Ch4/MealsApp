@@ -19,6 +19,7 @@ class User extends Model {
         'email',
         'name',
         'password',
+        'api_key'
     ];
 
     public function setPassword($password) {
