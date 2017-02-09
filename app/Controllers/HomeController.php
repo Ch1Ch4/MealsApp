@@ -16,10 +16,13 @@ class HomeController extends Controller {
 
     public function index($request, $response) {
 
-        $id = ($_SESSION['user']);
-        $user = User::where('id', $id)->first();
+        if (isset($_SESSION['user'])) {
+            
+            $id = ($_SESSION['user']);
+            $user = User::where('id', $id)->first();
 
-        $this->container->view->getEnvironment()->addGlobal('api_key', $user->api_key);
+            $this->container->view->getEnvironment()->addGlobal('api_key', $user->api_key);
+        }
 
         return $this->view->render($response, 'home.twig');
     }
